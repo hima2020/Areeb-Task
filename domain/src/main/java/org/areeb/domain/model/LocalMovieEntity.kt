@@ -1,12 +1,15 @@
 package org.areeb.domain.model
 
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 
 
-
-data class MovieDetails(
+@Entity(tableName = "movies")
+data class LocalMovieEntity(
+    @PrimaryKey(autoGenerate = false)
+    val id: Int,
     val adult: Boolean,
     val backdrop_path: String,
-    val id: Int,
     val original_language: String,
     val original_title: String,
     val overview: String,

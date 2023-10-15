@@ -4,6 +4,8 @@ import android.annotation.SuppressLint
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.lifecycle.Lifecycle
+import androidx.paging.PagingData
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
@@ -33,7 +35,7 @@ class MoviesAdapter(private val onItemClick: (MovieDetails) -> Unit) :
         fun bind(movie: MovieDetails) {
 
             binding.apply {
-                Log.d("IMagePathPoster","$ImageBaseUrl${movie.poster_path}")
+                Log.d("IMagePathPoster", "$ImageBaseUrl${movie.poster_path}")
                 Glide.with(root.context).load("$ImageBaseUrl${movie.poster_path}").into(ivPoster)
                 tvMovieTitle.text = movie.title
                 tvMovieOverview.text = movie.overview
@@ -42,6 +44,11 @@ class MoviesAdapter(private val onItemClick: (MovieDetails) -> Unit) :
                 }
             }
         }
+
+    }
+
+    fun addLocalData(paging: PagingData<MovieDetails>, lifeCycle: Lifecycle) {
+        submitData(lifeCycle, paging)
     }
 
     companion object {

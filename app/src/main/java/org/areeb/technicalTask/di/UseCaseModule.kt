@@ -4,8 +4,8 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
-import org.areeb.domain.interceptor.GetMovieDetailsUseCase
 import org.areeb.domain.interceptor.GetMoviesUseCase
+import org.areeb.domain.interceptor.InsertMovieUseCase
 import org.areeb.domain.repo.Repository
 
 @Module
@@ -18,8 +18,8 @@ object UseCaseModule {
     }
 
     @Provides
-    fun provideGetMovieDetailsUseCase(repo: Repository): GetMovieDetailsUseCase {
-        return GetMovieDetailsUseCase(repo)
+    fun provideInsertMovieDetailsUseCase(repo: Repository): InsertMovieUseCase {
+        return InsertMovieUseCase(repo)
     }
 
 }
